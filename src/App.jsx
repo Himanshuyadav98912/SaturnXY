@@ -10,7 +10,7 @@ import Header from "./components/Header"
 import HeroSection from "./components/HeroSection"
 import ProblemSection from "./components/ProblemSection.jsx"
 import Delivering from "./components/Delivering.jsx"
-import RecentInsight from "./components/RecentInsight.jsx"
+import RecentInsight from "./components/RecentInSight.jsx"
 import Footer from "./components/Footer.jsx"
 
 export default function App() {
