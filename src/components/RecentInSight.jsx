@@ -7,31 +7,31 @@ export default function RecentInsight() {
       title: "Bond Market Outlook 2025",
       desc: "Understand bond yield behavior and central bank cues.",
       slug: "bond-market-outlook-2025",
-      image: "/assets/RS1.jpg",
+      image: "/assets/RS1.webp",
     },
     {
       title: "Investment in India",
       desc: "Explore India's investment trajectory and trends.",
       slug: "investment-in-india",
-      image: "/assets/RS2.jpg",
+      image: "/assets/RS2.webp",
     },
     {
       title: "2025 Investment Landscape",
       desc: "Get expert commentary on what's ahead this year.",
       slug: "2025-investment-landscape",
-      image: "/assets/RS3.jpg",
+      image: "/assets/RS3.webp",
     },
     {
       title: "Tax-Smart Portfolio Moves",
       desc: "Minimize taxes and enhance returns with smarter choices.",
       slug: "tax-smart-portfolio-moves",
-      image: "/assets/RS4.jpg",
+      image: "/assets/RS4.webp",
     },
     {
       title: "Global Economic Calendar",
       desc: "Track key events that impact your investments.",
       slug: "global-economic-calendar",
-      image: "/assets/RS5.jpg",
+      image: "/assets/RS5.webp",
     },
   ];
 

@@ -34,7 +34,7 @@ export default function HeroSection() {
         {/* Right Side Image */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
-            src="/assets/bg1.jpg"
+            src="/assets/bg1.webp"
             alt="Hero Visual"
             className="rounded-xl shadow-2xl w-full max-w-md object-cover hover:scale-105 transition-transform duration-500"
           />

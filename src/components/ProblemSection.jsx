@@ -1,4 +1,5 @@
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
 import {
   FaChartLine,
   FaBuilding,
@@ -7,72 +8,49 @@ import {
   FaPiggyBank,
   FaBriefcase,
 } from "react-icons/fa";
-import { useInView } from "react-intersection-observer";
 
 const items = [
   {
     label: "Asset Management",
-    icon: <FaChartLine size={36} />,
-    bg: "/assets/bg2.jpg",
+    icon: <FaChartLine size={28} />,
+    bg: "/assets/bg2.webp",
     link: "/services/asset-management",
   },
   {
     label: "Commercial Advice",
-    icon: <FaBuilding size={36} />,
-    bg: "/assets/bg3.jpg",
+    icon: <FaBuilding size={28} />,
+    bg: "/assets/bg3.webp",
     link: "/services/commercial-advice",
   },
   {
     label: "Investment Banking",
-    icon: <FaUniversity size={36} />,
-    bg: "/assets/bg4.jpg",
+    icon: <FaUniversity size={28} />,
+    bg: "/assets/bg4.webp",
     link: "/services/investment-banking",
   },
   {
     label: "Market",
-    icon: <FaChartPie size={36} />,
-    bg: "/assets/bg5.jpg",
+    icon: <FaChartPie size={28} />,
+    bg: "/assets/bg5.webp",
     link: "/services/market",
   },
   {
     label: "Wealth Management",
-    icon: <FaPiggyBank size={36} />,
-    bg: "/assets/bg6.jpg",
+    icon: <FaPiggyBank size={28} />,
+    bg: "/assets/bg6.webp",
     link: "/services/wealth-management",
   },
   {
     label: "Private Equity",
-    icon: <FaBriefcase size={36} />,
-    bg: "/assets/bg7.jpg",
+    icon: <FaBriefcase size={28} />,
+    bg: "/assets/bg7.webp",
     link: "/services/private-equity",
   },
 ];
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 800,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 3000,
-  arrows: false,
-  responsive: [
-    { breakpoint: 1280, settings: { slidesToShow: 2 } },
-    { breakpoint: 768, settings: { slidesToShow: 1 } },
-  ],
-};
-
 export default function ProblemSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-
   return (
-    <section
-      ref={ref}
-      className={`relative py-20 transition-opacity duration-1000 ${
-        inView ? "opacity-100" : "opacity-0"
-      } bg-gradient-to-b from-blue-50 to-white px-6`}
-    >
+    <section className="relative py-20 bg-gradient-to-b from-blue-50 to-white px-6">
       {/* Wave Top */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0 rotate-180">
         <svg
@@ -99,29 +77,42 @@ export default function ProblemSection() {
         </p>
       </div>
 
-      {/* Cards Carousel */}
+      {/* Swiper Carousel */}
       <div className="max-w-7xl mx-auto z-10 relative">
-        <Slider {...settings}>
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={24}
+          slidesPerView={3}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1280: { slidesPerView: 3 },
+          }}
+        >
           {items.map((item, idx) => (
-            <div key={idx} className="px-4">
+            <SwiperSlide key={idx}>
               <a href={item.link}>
                 <div
-                  className="h-64 rounded-2xl overflow-hidden shadow-lg border bg-cover bg-center relative transition-transform transform hover:scale-[1.02]"
+                  className="h-64 rounded-2xl overflow-hidden shadow-lg bg-cover bg-center relative transition-transform transform hover:scale-105 will-change-transform"
                   style={{ backgroundImage: `url(${item.bg})` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-blue-800/50 to-black/60"></div>
                   <div className="relative z-10 h-full flex flex-col items-center justify-center text-white p-6 text-center">
                     <div className="mb-4 text-blue-200">{item.icon}</div>
-                    <h3 className="text-xl font-semibold mb-2">{item.label}</h3>
+                    <h3 className="text-xl font-semibold mb-2">
+                      {item.label}
+                    </h3>
                     <span className="text-sm text-blue-300 hover:text-blue-400 transition font-medium">
                       Learn More →
                     </span>
                   </div>
                 </div>
               </a>
-            </div>
+            </SwiperSlide>
           ))}
-        </Slider>
+        </Swiper>
       </div>
 
       {/* Wave Bottom */}

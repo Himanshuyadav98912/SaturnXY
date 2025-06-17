@@ -14,42 +14,42 @@ export default function DeliveringSection() {
       title: "Deep Research",
       description: "Get ahead with fact-based research and insights.",
       icon: <FaSearchDollar className="text-white" size={28} />,
-      bgImage: "url('/assets/DS1.jpg')",
+      bgImage: "/assets/DS1.jpg",
       slug: "deep-research",
     },
     {
       title: "Market Analysis",
       description: "Track economic changes and market fluctuations.",
       icon: <FaChartLine className="text-white" size={28} />,
-      bgImage: "url('/assets/DS2.jpg')",
+      bgImage: "/assets/DS2.jpg",
       slug: "market-analysis",
     },
     {
       title: "Smart Investing",
       description: "Grow and preserve your wealth intelligently.",
       icon: <FaPiggyBank className="text-white" size={28} />,
-      bgImage: "url('/assets/DS3.jpg')",
+      bgImage: "/assets/DS3.jpg",
       slug: "smart-investing",
     },
     {
       title: "Actionable Insights",
       description: "Real-time ideas to guide your next move.",
       icon: <FaLightbulb className="text-white" size={28} />,
-      bgImage: "url('/assets/DS4.jpg')",
+      bgImage: "/assets/DS4.jpg",
       slug: "actionable-insights",
     },
     {
       title: "Global Trust",
       description: "Serving investors across 80+ countries.",
       icon: <FaGlobe className="text-white" size={28} />,
-      bgImage: "url('/assets/DS5.jpg')",
+      bgImage: "/assets/DS5.jpg",
       slug: "global-trust",
     },
     {
       title: "Client-Centric",
       description: "Partnerships built on understanding and results.",
       icon: <FaHandshake className="text-white" size={28} />,
-      bgImage: "url('/assets/DS6.jpg')",
+      bgImage: "/assets/DS6.jpg",
       slug: "client-centric",
     },
   ];
@@ -70,14 +70,15 @@ export default function DeliveringSection() {
 
       {/* Background Overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
+        className="absolute inset-0 bg-cover bg-center opacity-20"
         style={{
-          backgroundImage: "url('/assets/bg.jpg')", // you can change this background image if needed
+          backgroundImage: "url('/assets/bg.jpg')",
+          willChange: "opacity",
         }}
       ></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
-        {/* Top Section */}
+        {/* Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
             We Are <span className="text-blue-600">Delivering</span> for Investors
@@ -87,13 +88,11 @@ export default function DeliveringSection() {
           </p>
         </div>
 
-        {/* Stats Block */}
-        <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-10 text-center mb-20 border border-blue-100">
+        {/* Stats */}
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-10 text-center mb-20 border border-blue-100">
           <p className="text-5xl font-bold text-gray-900 mb-1">250K+</p>
           <p className="text-lg text-gray-700 font-medium">Assets Under Management</p>
           <p className="text-sm text-gray-500">As of July 2025</p>
-
-          {/* Button navigates to /signup */}
           <Link
             to="/signup"
             className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white font-medium rounded-full shadow hover:bg-blue-700 transition"
@@ -102,19 +101,26 @@ export default function DeliveringSection() {
           </Link>
         </div>
 
-        {/* Feature Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
             <Link
               to={`/deliver/${feature.slug}`}
               key={idx}
-              className="relative rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition"
+              className="relative group rounded-2xl overflow-hidden shadow-lg transition-transform transform hover:scale-[1.02] will-change-transform"
             >
+              {/* Background */}
               <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: feature.bgImage }}
+                className="absolute inset-0 bg-cover bg-center transition-opacity duration-300"
+                style={{
+                  backgroundImage: `url(${feature.bgImage})`,
+                }}
               ></div>
-              <div className="absolute inset-0 bg-black opacity-50 group-hover:opacity-40 transition"></div>
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all"></div>
+
+              {/* Content */}
               <div className="relative z-10 p-6 text-white">
                 <div className="mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
