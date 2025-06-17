@@ -21,7 +21,7 @@ export default function Header() {
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 text-2xl font-bold text-blue-900"
+          className="flex items-center text-2xl font-bold text-blue-900"
         >
           <TbBuildingBank className="text-3xl" />
           Saturn<span className="text-black">YX</span>
