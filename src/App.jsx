@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Home from "./pages/Home"
-import SignIn from "./pages/Signin"
+import SignIn from "./pages/SignIn"
 import SignUP from "./pages/SignUp"
 import About from "./pages/About"
 import Profile from "./pages/Profile"
@@ -25,8 +25,8 @@ export default function App() {
  
   <Routes>
     <Route path="/home" element={<Home/>}/> 
-    <Route path="/sign-In" element={<SignIn/>}/> 
-    <Route path="/sign-up" element={<SignUP/>}/> 
+    <Route path="/signin" element={<SignIn/>}/> 
+    <Route path="/signup" element={<SignUP/>}/> 
     <Route path="/about" element={<About/>}/> 
     <Route path="/profile" element={<Profile/>}/> 
   </Routes>
