@@ -13,37 +13,37 @@ const items = [
   {
     label: "Asset Management",
     icon: <FaChartLine size={36} />,
-    bg: "/assets/bg1.jpg",
+    bg: "/assets/bg2.jpg",
     link: "/services/asset-management",
   },
   {
     label: "Commercial Advice",
     icon: <FaBuilding size={36} />,
-    bg: "/assets/bg1.jpg",
+    bg: "/assets/bg3.jpg",
     link: "/services/commercial-advice",
   },
   {
     label: "Investment Banking",
     icon: <FaUniversity size={36} />,
-    bg: "/assets/bg1.jpg",
+    bg: "/assets/bg4.jpg",
     link: "/services/investment-banking",
   },
   {
     label: "Market",
     icon: <FaChartPie size={36} />,
-    bg: "//assets/bg1.jpg",
+    bg: "/assets/bg5.jpg",
     link: "/services/market",
   },
   {
     label: "Wealth Management",
     icon: <FaPiggyBank size={36} />,
-    bg: "/assets/bg1.jpg",
+    bg: "/assets/bg6.jpg",
     link: "/services/wealth-management",
   },
   {
     label: "Private Equity",
     icon: <FaBriefcase size={36} />,
-    bg: "/public/assets/bg1.jpg",
+    bg: "/assets/bg7.jpg",
     link: "/services/private-equity",
   },
 ];

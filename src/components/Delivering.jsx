@@ -6,6 +6,7 @@ import {
   FaHandshake,
   FaGlobe,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function DeliveringSection() {
   const features = [
@@ -13,49 +14,43 @@ export default function DeliveringSection() {
       title: "Deep Research",
       description: "Get ahead with fact-based research and insights.",
       icon: <FaSearchDollar className="text-white" size={28} />,
-      bgImage:
-        "url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80')",
-      link: "https://example.com/research",
+      bgImage: "url('/assets/DS1.jpg')",
+      slug: "deep-research",
     },
     {
       title: "Market Analysis",
       description: "Track economic changes and market fluctuations.",
       icon: <FaChartLine className="text-white" size={28} />,
-      bgImage:
-        "url('https://images.unsplash.com/photo-1531988042231-d39a9cc12a9a?auto=format&fit=crop&w=800&q=80')",
-      link: "https://example.com/analysis",
+      bgImage: "url('/assets/DS2.jpg')",
+      slug: "market-analysis",
     },
     {
       title: "Smart Investing",
       description: "Grow and preserve your wealth intelligently.",
       icon: <FaPiggyBank className="text-white" size={28} />,
-      bgImage:
-        "url('https://images.unsplash.com/photo-1581091870620-fb8a4cf1bdee?auto=format&fit=crop&w=800&q=80')",
-      link: "https://example.com/investing",
+      bgImage: "url('/assets/DS3.jpg')",
+      slug: "smart-investing",
     },
     {
       title: "Actionable Insights",
       description: "Real-time ideas to guide your next move.",
       icon: <FaLightbulb className="text-white" size={28} />,
-      bgImage:
-        "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80')",
-      link: "https://example.com/insights",
+      bgImage: "url('/assets/DS4.jpg')",
+      slug: "actionable-insights",
     },
     {
       title: "Global Trust",
       description: "Serving investors across 80+ countries.",
       icon: <FaGlobe className="text-white" size={28} />,
-      bgImage:
-        "url('https://images.unsplash.com/photo-1591696205602-2c44a1d9181d?auto=format&fit=crop&w=800&q=80')",
-      link: "https://example.com/trust",
+      bgImage: "url('/assets/DS5.jpg')",
+      slug: "global-trust",
     },
     {
       title: "Client-Centric",
       description: "Partnerships built on understanding and results.",
       icon: <FaHandshake className="text-white" size={28} />,
-      bgImage:
-        "url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=800&q=80')",
-      link: "https://example.com/clients",
+      bgImage: "url('/assets/DS6.jpg')",
+      slug: "client-centric",
     },
   ];
 
@@ -77,8 +72,7 @@ export default function DeliveringSection() {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1605902711622-cfb43c4437ae?auto=format&fit=crop&w=1950&q=80')",
+          backgroundImage: "url('/assets/bg.jpg')", // you can change this background image if needed
         }}
       ></div>
 
@@ -86,38 +80,34 @@ export default function DeliveringSection() {
         {/* Top Section */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-            We Are <span className="text-blue-600">Delivering</span> for
-            Investors
+            We Are <span className="text-blue-600">Delivering</span> for Investors
           </h2>
           <p className="mt-4 text-lg text-gray-700">
-            Unlock opportunities with tailored insights, innovative strategies,
-            and a trusted investment platform.
+            Unlock opportunities with tailored insights, innovative strategies, and a trusted investment platform.
           </p>
         </div>
 
-        {/* 250K Stats Block */}
+        {/* Stats Block */}
         <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-10 text-center mb-20 border border-blue-100">
           <p className="text-5xl font-bold text-gray-900 mb-1">250K+</p>
-          <p className="text-lg text-gray-700 font-medium">
-            Assets Under Management
-          </p>
+          <p className="text-lg text-gray-700 font-medium">Assets Under Management</p>
           <p className="text-sm text-gray-500">As of July 2025</p>
-          <a
-            href="#"
+
+          {/* Button navigates to /signup */}
+          <Link
+            to="/signup"
             className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white font-medium rounded-full shadow hover:bg-blue-700 transition"
           >
             Start Investing Today
-          </a>
+          </Link>
         </div>
 
-        {/* Feature Grid */}
+        {/* Feature Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {features.map((feature, idx) => (
-            <a
+            <Link
+              to={`/deliver/${feature.slug}`}
               key={idx}
-              href={feature.link}
-              target="_blank"
-              rel="noopener noreferrer"
               className="relative rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition"
             >
               <div
@@ -130,7 +120,7 @@ export default function DeliveringSection() {
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p className="text-sm">{feature.description}</p>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
