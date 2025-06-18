@@ -24,10 +24,10 @@ import Explore from "./pages/Explore";
 import ProblemBlog from "./pages/DeliveringBlog";
 import DeliveringBlog from "./pages/DeliveringBlog";
 import InsightBlog from "./pages/InsightBlog";
-import SignIn from "./pages/Signin";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import SignIn from "./pages/Signin";
 
 export default function App() {
   return (
@@ -53,7 +53,7 @@ export default function App() {
           {/* Other Pages */}
           <Route path="/home" element={<Home />} />
           <Route path="/signup" element={<SignUP />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signin" element={<SignIn/>} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /> </PrivateRoute>} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/about" element={<About />} />

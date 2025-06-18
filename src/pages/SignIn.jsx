@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function SignIn() {
+export default function Signin() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
