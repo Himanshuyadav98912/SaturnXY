@@ -70,11 +70,11 @@ export default function Header() {
   ) : (
     <>
       <Link
-        to="/signin"
+        to="/login"
         onClick={() => setMenuOpen(false)}
         className="block w-full text-center bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-md font-semibold transition"
       >
-        Sign In
+        Login
       </Link>
       <Link
         to="/signup"
@@ -89,7 +89,7 @@ export default function Header() {
   return (
     <header className="bg-white shadow-md px-4 sm:px-6 md:px-10 py-3 fixed top-0 left-0 right-0 z-50">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        {/* Logo */}
+        {/* Logo aligned to the far left */}
         <Link
           to="/"
           className="flex items-center text-2xl font-bold text-blue-900"
@@ -99,7 +99,7 @@ export default function Header() {
           Saturn<span className="text-black">YX</span>
         </Link>
 
-        {/* Hamburger menu button - visible below lg */}
+        {/* Hamburger menu icon for mobile */}
         <button
           className="lg:hidden text-2xl text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -109,7 +109,7 @@ export default function Header() {
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        {/* Desktop Navigation - visible lg and above */}
+        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center justify-between w-full pl-12">
           <ul className="flex gap-8 text-gray-700 font-medium">
             {navItems.map((item, idx) => (
@@ -138,7 +138,7 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Mobile Menu - visible below lg */}
+      {/* Mobile Navigation */}
       {menuOpen && (
         <nav
           className="lg:hidden mt-4 bg-white rounded-md shadow-lg p-5 space-y-5 max-w-sm mx-auto"
@@ -177,4 +177,3 @@ export default function Header() {
     </header>
   );
 }
-
