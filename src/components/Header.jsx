@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { TbBuildingBank } from "react-icons/tb";
-import { FaGlobe, FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaGlobe, FaBars, FaTimes, FaSearch } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const navItems = [
     { label: "About Us", to: "/about" },
@@ -15,6 +17,15 @@ export default function Header() {
     { label: "Solutions", to: "/solutions" },
     { label: "Explore", to: "/explore" },
   ];
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery("");
+      setMenuOpen(false); // close mobile menu
+    }
+  };
 
   const authButtonsDesktop = user ? (
     <>
@@ -88,8 +99,8 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-md px-4 sm:px-6 md:px-10 py-3 fixed top-0 left-0 right-0 z-50">
-      <div className="flex justify-between items-center max-w-7xl mx-auto">
-        {/* Logo aligned to the far left */}
+      <div className="flex items-center justify-between max-w-7xl mx-auto w-full">
+        {/* Logo aligned to left */}
         <Link
           to="/"
           className="flex items-center text-2xl font-bold text-blue-900"
@@ -99,7 +110,7 @@ export default function Header() {
           Saturn<span className="text-black">YX</span>
         </Link>
 
-        {/* Hamburger menu icon for mobile */}
+        {/* Hamburger for mobile */}
         <button
           className="lg:hidden text-2xl text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -109,8 +120,11 @@ export default function Header() {
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center justify-between w-full pl-12">
+        {/* Desktop nav */}
+        <nav
+          className="hidden lg:flex items-center justify-between w-full pl-12"
+          role="navigation"
+        >
           <ul className="flex gap-8 text-gray-700 font-medium">
             {navItems.map((item, idx) => (
               <li key={idx} className="relative group cursor-pointer">
@@ -122,23 +136,35 @@ export default function Header() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             <div className="flex items-center gap-1 text-gray-700 font-medium select-none">
               <FaGlobe className="text-lg" />
               Global
             </div>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="px-3 py-1.5 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-              aria-label="Search"
-            />
+
+            <form onSubmit={handleSearchSubmit} className="flex items-center gap-2">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="px-3 py-1.5 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1.5 rounded"
+                title="Search"
+              >
+                <FaSearch />
+              </button>
+            </form>
+
             <div className="flex items-center gap-3">{authButtonsDesktop}</div>
           </div>
         </nav>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Menu */}
       {menuOpen && (
         <nav
           className="lg:hidden mt-4 bg-white rounded-md shadow-lg p-5 space-y-5 max-w-sm mx-auto"
@@ -164,12 +190,22 @@ export default function Header() {
             Global
           </div>
 
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-            aria-label="Search"
-          />
+          <form onSubmit={handleSearchSubmit} className="flex gap-2">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            <button
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-3 rounded"
+              title="Search"
+            >
+              <FaSearch />
+            </button>
+          </form>
 
           <div className="flex flex-col gap-3 mt-4">{authButtonsMobile}</div>
         </nav>
