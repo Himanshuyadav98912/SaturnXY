@@ -34,10 +34,10 @@ export default function Header() {
   ) : (
     <>
       <Link
-        to="/signin"
+        to="/login"
         className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-1.5 rounded-md text-sm font-semibold transition"
       >
-        Sign In
+        Login
       </Link>
       <Link
         to="/signup"

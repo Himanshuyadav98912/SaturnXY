@@ -27,7 +27,9 @@ import InsightBlog from "./pages/InsightBlog";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
-import SignIn from "./pages/Signin";
+import Login from "./pages/Login";
+import SearchResults from "./pages/SearchResults";
+import ProblemDetail from "./pages/ProblemDetail";
 
 export default function App() {
   return (
@@ -53,7 +55,7 @@ export default function App() {
           {/* Other Pages */}
           <Route path="/home" element={<Home />} />
           <Route path="/signup" element={<SignUP />} />
-          <Route path="/signin" element={<SignIn/>} />
+          <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /> </PrivateRoute>} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/about" element={<About />} />
@@ -65,6 +67,8 @@ export default function App() {
           <Route path="/services/:slug" element={<ProblemBlog/>} />
           <Route path="/deliver/:slug" element={<DeliveringBlog/>} />
           <Route path="/insights/:slug" element={<InsightBlog />} />
+          <Route path="/search" element={<SearchResults />} />
+          <Route path="/problem/:slug" element={<ProblemDetail />} />
 
           {/* Fallback */}
           <Route

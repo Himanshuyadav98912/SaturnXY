@@ -1,8 +1,11 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+// pages/Login.jsx
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-export default function Signin() {
+export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const { setUser } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -29,12 +32,14 @@ export default function Signin() {
         return;
       }
 
-      // Save token
-      localStorage.setItem("token", data.token);
+      const token = data.token;
+      localStorage.setItem("token", token);
 
-      // Navigate based on isAdmin (optional)
-      const decoded = JSON.parse(atob(data.token.split('.')[1]));
-      if (decoded && decoded.isAdmin) {
+      const decoded = JSON.parse(atob(token.split(".")[1]));
+      setUser(decoded); // ✅ update context
+
+      // ✅ Navigate based on role
+      if (decoded.isAdmin) {
         navigate("/admin");
       } else {
         navigate("/dashboard");
@@ -49,10 +54,10 @@ export default function Signin() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
-        <h2 className="text-2xl font-bold text-center text-blue-800 mb-6">Sign In</h2>
+        <h2 className="text-2xl font-bold text-center text-blue-800 mb-6">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email address</label>
+            <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
               type="email"
               name="email"
@@ -77,15 +82,9 @@ export default function Signin() {
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md font-medium"
           >
-            Sign In
+            Login
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-gray-600">
-          Don&apos;t have an account?{" "}
-          <Link to="/signup" className="text-blue-600 hover:underline">
-            Sign Up
-          </Link>
-        </p>
       </div>
     </div>
   );
